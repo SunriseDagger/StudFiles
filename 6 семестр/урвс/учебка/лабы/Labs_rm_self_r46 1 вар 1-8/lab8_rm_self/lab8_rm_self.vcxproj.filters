@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{453ab1a2-defb-45bd-bb06-689aed73721a}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{625f45f2-8bfc-45eb-b563-8ebf394f051f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{af608e15-26c9-4611-bc47-ee0c9953aee5}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{c3cc7238-4f35-407b-9a9e-08807f77e459}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="dns.url">
+      <Filter>Resource files</Filter>
+    </None>
+    <None Include="hosts">
+      <Filter>Resource files</Filter>
+    </None>
+    <None Include="debug_client.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main8.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,34 @@
+main: pipes created
+main: signal handlers are set
+main: 'pi' process created
+main: 'e'  process created
+main: waiting for signals from children...
+pi  : started
+pi  : signal handlers are set
+pi  : signal 'started' to parent is sent
+pi  : waiting for signal 'start' from parent...
+e   : started
+e   : signal handlers are set
+e   : signal 'started' to parent is sent
+e   : waiting for signal 'start' from parent...
+main: signal from 'pi'
+main: signal from 'e'
+main: signals received
+main: signals 'start' to children are sent
+pi  : signal received
+pi  : signal 'start' from parent received
+pi  : data written
+pi  : waiting for signal 'stop' from parent...
+e   : signal received
+e   : signal 'start' from parent received
+e   : data written
+e   : waiting for signal 'stop' from parent...
+main: values are readed
+main: signals 'stop' to children are sent
+main: waiting for children to terminate...
+pi  : signal received
+pi  : signal 'stop' received
+e   : signal received
+e   : signal 'stop' received
+main: children terminated, exit...
+pi=3.141384, e=2.718282, f=0.037946

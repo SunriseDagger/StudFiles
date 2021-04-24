@@ -1,0 +1,205 @@
+Текст программы
+4.1
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include "io.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+ {
+ int df,df1,df2;
+ float f,x,exp,pi;
+//father
+df1=creat("dano.txt",S_IRUSR);
+df2=open("dano.txt",O_RDONLY);
+x=1;
+// Son1
+if (fork()==0)
+{
+ exp= 1-((x*x)/2)+(x*x*x*x)/8;
+ write(df1,&exp,sizeof(float));
+ exit(0);
+}//if
+//father continue
+ wait();
+ read(df2,&exp,sizeof(float));
+ f=exp;
+//Son2
+if(fork()==0)
+{
+ pi=4.-4./3.+4./5.-4./7.+4./9.;
+ write(df1,&pi,sizeof(float));
+ exit(0);
+}
+//father continue
+wait();
+ read(df2,&pi,sizeof(float));
+ f=f/sqrt(2*pi);
+ printf("f   \n%f",f);
+ close(df1);
+ close (df2);
+remove("dano.txt");
+}
+4.2
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include "io.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <math.h>
+#include<signal.h>
+void sign()
+{
+;
+}
+int main()
+ {
+   int df1[2];
+   char str1[10],str2[10];
+   float f,exp,pi;
+//father
+// open canal for reading and writing
+pipe(df1);
+// Son1
+if (fork()==0)
+{
+//Signal on begin
+  signal(SIGALRM,sign);
+  alarm(1);
+  printf("begin son 1\n");
+  printf("wait 5 sec \n");
+//writing inode of canal for write
+    sprintf(str1, "%d",df1[0]);
+    sprintf(str2, "%d",df1[1]);
+// Signal on end
+  signal(SIGKILL,sign);
+  pause();
+    execl("/home/brigades/pm0702/lab4!/LAB4_2/son1","son1",str1,str2,0);
+}//if
+//father continue
+printf("Klik of begin s1\n") ;
+kill(1,SIGALRM);
+sleep(5);
+kill(1,SIGKILL);
+printf (" end of s1  \n");
+read(df1[0],&exp,sizeof(float));
+f=exp;
+//Son2
+ if(fork()==0)
+{
+//Signal on begin
+  signal(SIGALRM,sign);
+  alarm(3);
+  printf("begin son 2\n");
+  printf("wait 5 sec \n");
+//writing inode of canal for write
+ sprintf(str1, "%d",df1[0]);
+  sprintf(str2, "%d",df1[1]);
+// Signal on end
+  signal(SIGKILL,sign);
+  pause();
+    execl("/home/brigades/pm0702/lab4!/LAB4_2/son2","son2",str1,str2,0);
+}
+//end if
+//father continue
+printf("Klik of begin s2\n") ;
+kill(1,SIGALRM);
+sleep(5);
+kill(1,SIGKILL);
+printf ("End of s2  \n");
+  read(df1[0],&pi,sizeof(float));
+  f=f/sqrt(2*pi);
+  printf("f=  %f\n",f);
+close(df1[0]);
+close (df1[1]);
+}
+// Son1
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include "io.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <math.h>
+int main(int argc, char * argv[])
+ {
+ int df,df1[2];
+ float x,exp;
+// read inode of canal for write
+sscanf (argv[2], "%d", &df1[1]);
+ x=1;
+ exp= 1-x*x/2+x*x*x*x/8;
+ write(df1[1],&exp,sizeof(float));
+ return 0;
+}
+// Son2
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include "io.h"
+#include <fcntl.h>
+#include <stdio.h>
+#include <math.h>
+int main(int argc, char * argv[])
+ {
+ int df1[2];
+ float pi;
+//read inode of canal for writing
+ sscanf (argv[2], "%d", &df1[1]);
+ pi=4-4./3.+4./5.-4./7.+1./9.;
+ write(df1[1],&pi,sizeof(float));
+  return 0;
+}
+
+1. Задание 
+Разработать программу, вычисляющую плотность нормального распределения в точке x по формуле f(x)=Exp(-x**2/2)/Sqrt(2*Пи). Для нахождения Пи и Exp(-x**2/2) программа должна породить два параллельных процесса, вычисляющих эти величины путем разложения в ряд по формулам вычислительной математики.
+2. Описание используемых команд
+Для порождения нового процесса (процесс-потомок) используется системный вызов fork():                                                 int fork()
+Ожидание завершения процесса-потомка родительским процессом выполняется с помощью системного вызова wait():
+wait(int *status)
+Системный вызов exit(), предназначенного для завершения функционирования процесса:                               void exit(int status)
+В нашем  случае в рамках порожденного процесса загружается для выполнения программа, определенная  системным вызовом execl().Который осуществляет смену программы, определяющей функционирование данного  процесса:  
+execl(name,arg0,arg1,...,argn,0)
+char *name, *arg0, *arg1,...,*argn;
+Для посылки сигнала используется системный вызов, имеющий формат
+void kill(int pid, int sig)
+Использование системного вызова signal() позволяет процессу самостоятельно определить свою реакцию на получение того или иного события (сигнала):
+int (*signal(sig, func) ()
+int sig; int (*func)();
+Реакцией процесса, осуществившего системный вызов signal() с аргументом func, при получении сигнала sig будет вызов функции func().
+Системный вызов pause() позволяет приостановить процесс до тех пор, пока не будет получен какой-либо сигнал:
+void pause()
+Системный вызов alarm(n) обеспечивает посылку процессу сигнала SIGALARM через n секунд.
+Программный канал создается с помощью системного вызова pipe(), формат которого
+int fd[2];
+pipe(fd)
+Открытие файла выполняется системным вызовом:
+#include <fcntl.h>
+ int open(file,O_RDONLY(для чтения))
+		O_WRONLY(для записи)
+		O_APPEND(для добавления)
+Системные вызовы 
+для записи :       write(int h, void * buf,unsingen len),
+и для чтения:      read(int h, void * buf,unsingen len)
+
+
+
+
+
+
+
+
+
+
+3. Процедура запуска программы 
+Запуск программы 4.1
+ В данной программе все действия, относящиеся как к родительскому процессу, так и к порожденным процессам, выполняются в рамках одного исполняемого файла : l4.c, запускаемый файл a.out .
+Обмен данными между процессом-отцом и процессами-потомками осуществляется посредствам временного файла:  процесс-отец после порождения процесса-потомка постоянно опрашивает временный файл, ожидая появления в нем информации от процесса-потомка.
+Запуск программы 4.2
+Действия процессов-потомков реализуются отдельных программах son1 son2 , запускаемых  системным вызовом execl() из процесса-потомка. Процессы-потомоки, после порождения, начинают и завершают свое функционирование по сигналу, посылаемому процессом-предком.Обмен данными между процессами осуществляется через программный канал. 
+Основной текст программы находится в файле lab.c,запускаемый файл *lab.
+ 
+

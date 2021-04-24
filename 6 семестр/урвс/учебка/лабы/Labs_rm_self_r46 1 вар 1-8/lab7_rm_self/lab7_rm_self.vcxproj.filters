@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{2ca44b77-179c-4466-ace5-24ba4aeec1bb}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{196f5369-191e-4d96-93c9-ebeb0dbe1d3c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{bb3356b1-a437-4b64-9ed4-0e464efae6c2}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{b6047068-fa04-4756-a409-bcf5505d5446}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="poetry.txt">
+      <Filter>Resource files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="fork_thread.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="main7.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fork_thread.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

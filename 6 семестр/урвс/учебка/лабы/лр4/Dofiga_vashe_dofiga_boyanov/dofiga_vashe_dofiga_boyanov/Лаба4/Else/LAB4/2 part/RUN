@@ -1,0 +1,3 @@
+g++ sonproc.cpp -o son
+g++ mainproc.cpp -o main
+./main

@@ -1,0 +1,3 @@
+gcc lab_4_1.cpp -o lab_4_1
+rm temp.tmp
+./lab_4_1 > rez

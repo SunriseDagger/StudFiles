@@ -1,0 +1,1368 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./Banker_alg.files/filelist.xml">
+<title>Взаимодействие процессов</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Alexandre Katalov</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>vms</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>5</o:TotalTime>
+  <o:LastPrinted>2008-03-06T05:15:00Z</o:LastPrinted>
+  <o:Created>2008-04-07T03:00:00Z</o:Created>
+  <o:LastSaved>2008-04-07T03:00:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>671</o:Words>
+  <o:Characters>3828</o:Characters>
+  <o:Company>Elcom Ltd</o:Company>
+  <o:Bytes>142336</o:Bytes>
+  <o:Lines>31</o:Lines>
+  <o:Paragraphs>7</o:Paragraphs>
+  <o:CharactersWithSpaces>4701</o:CharactersWithSpaces>
+  <o:Version>9.6926</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:UsePrinterMetrics/>
+   <w:WW6BorderRules/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	font-weight:normal;}
+h3
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	font-weight:normal;}
+h4
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h5
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h6
+	{mso-style-next:Обычный;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 216.0pt right 432.0pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 207.65pt right 415.3pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a, li.a, div.a
+	{mso-style-name:Программа;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:34.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan lines-together no-line-numbers;
+	mso-hyphenate:none;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.a0
+	{mso-style-name:Идентификатор;
+	mso-ansi-font-size:12.0pt;
+	mso-ascii-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";}
+ /* Page Definitions */
+@page
+	{mso-footnote-separator:url("./Banker_alg.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("./Banker_alg.files/header.htm") fcs;
+	mso-endnote-separator:url("./Banker_alg.files/header.htm") es;
+	mso-endnote-continuation-separator:url("./Banker_alg.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 1.0cm 72.0pt 3.0cm;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-even-footer:url("./Banker_alg.files/header.htm") ef1;
+	mso-footer:url("./Banker_alg.files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:-2099237338;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:-2;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l1:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l2
+	{mso-list-id:20596220;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1311831562 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:51737291;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:64648359;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1325250152 1086198004 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@list l5
+	{mso-list-id:132991837;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:311563427;
+	mso-list-type:simple;
+	mso-list-template-ids:-264593346;}
+@list l6:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l7
+	{mso-list-id:364477394;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1358718070 1794261904 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l7:level1
+	{mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l8
+	{mso-list-id:368648620;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l9
+	{mso-list-id:372970674;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:388922474;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l11
+	{mso-list-id:390885450;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l12
+	{mso-list-id:403114661;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l13
+	{mso-list-id:453448745;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l14
+	{mso-list-id:480927991;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l15
+	{mso-list-id:487092793;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1561838904 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l16
+	{mso-list-id:514807653;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l17
+	{mso-list-id:634600008;
+	mso-list-type:hybrid;
+	mso-list-template-ids:994768046 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l18
+	{mso-list-id:749085604;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l19
+	{mso-list-id:769666685;
+	mso-list-template-ids:1908045138;}
+@list l19:level1
+	{mso-level-start-at:193;
+	mso-level-text:%1;
+	mso-level-tab-stop:74.25pt;
+	mso-level-number-position:left;
+	margin-left:74.25pt;
+	text-indent:-74.25pt;}
+@list l19:level2
+	{mso-level-start-at:125;
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:85.55pt;
+	mso-level-number-position:left;
+	margin-left:85.55pt;
+	text-indent:-74.25pt;}
+@list l19:level3
+	{mso-level-start-at:2;
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:96.85pt;
+	mso-level-number-position:left;
+	margin-left:96.85pt;
+	text-indent:-74.25pt;}
+@list l19:level4
+	{mso-level-start-at:129;
+	mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:108.15pt;
+	mso-level-number-position:left;
+	margin-left:108.15pt;
+	text-indent:-74.25pt;}
+@list l19:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:119.45pt;
+	mso-level-number-position:left;
+	margin-left:119.45pt;
+	text-indent:-74.25pt;}
+@list l19:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:130.75pt;
+	mso-level-number-position:left;
+	margin-left:130.75pt;
+	text-indent:-74.25pt;}
+@list l19:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:142.05pt;
+	mso-level-number-position:left;
+	margin-left:142.05pt;
+	text-indent:-74.25pt;}
+@list l19:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:153.35pt;
+	mso-level-number-position:left;
+	margin-left:153.35pt;
+	text-indent:-74.25pt;}
+@list l19:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:180.4pt;
+	mso-level-number-position:left;
+	margin-left:180.4pt;
+	text-indent:-90.0pt;}
+@list l20
+	{mso-list-id:997418554;
+	mso-list-type:hybrid;
+	mso-list-template-ids:855165934 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l21
+	{mso-list-id:1038974551;
+	mso-list-type:hybrid;
+	mso-list-template-ids:726810888 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l21:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l22
+	{mso-list-id:1074664133;
+	mso-list-type:simple;
+	mso-list-template-ids:68747279;}
+@list l22:level1
+	{mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l23
+	{mso-list-id:1095637931;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l24
+	{mso-list-id:1164204814;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l25
+	{mso-list-id:1166555818;
+	mso-list-type:simple;
+	mso-list-template-ids:-1467030158;}
+@list l25:level1
+	{mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-weight:bold;}
+@list l26
+	{mso-list-id:1168903633;
+	mso-list-type:simple;
+	mso-list-template-ids:868652402;}
+@list l26:level1
+	{mso-level-start-at:0;
+	mso-level-number-format:none;
+	mso-level-text:"";
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:0cm;
+	text-indent:0cm;}
+@list l27
+	{mso-list-id:1175998211;
+	mso-list-type:simple;
+	mso-list-template-ids:-264593346;}
+@list l27:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l28
+	{mso-list-id:1193226774;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l28:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l29
+	{mso-list-id:1226063706;
+	mso-list-type:hybrid;
+	mso-list-template-ids:593139458 68747279 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l29:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l30
+	{mso-list-id:1263689238;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l30:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l31
+	{mso-list-id:1374619271;
+	mso-list-type:simple;
+	mso-list-template-ids:-264593346;}
+@list l31:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l32
+	{mso-list-id:1451047162;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l32:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l33
+	{mso-list-id:1581407810;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-934500212 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l33:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l34
+	{mso-list-id:1654946077;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l34:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l35
+	{mso-list-id:1710454917;
+	mso-list-type:simple;
+	mso-list-template-ids:68747279;}
+@list l35:level1
+	{mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l36
+	{mso-list-id:1764840597;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l36:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l37
+	{mso-list-id:1881556170;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l37:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l38
+	{mso-list-id:1892616040;
+	mso-list-type:simple;
+	mso-list-template-ids:-264593346;}
+@list l38:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:54.0pt;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-18.0pt;}
+@list l39
+	{mso-list-id:1934390528;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l39:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l40
+	{mso-list-id:1940872931;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l40:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l41
+	{mso-list-id:1948847653;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l41:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l42
+	{mso-list-id:1950769555;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l42:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l43
+	{mso-list-id:1977641642;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l43:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l44
+	{mso-list-id:2080129069;
+	mso-list-type:simple;
+	mso-list-template-ids:68747265;}
+@list l44:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level1 lfo7
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:2.85pt;
+	mso-level-legacy-space:0cm;
+	margin-left:14.2pt;
+	text-indent:-2.85pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt'>Программная реализация алгоритма банкира<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify;text-indent:
+36.0pt'><b style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'>Замечания к программе:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>1. Предполагается, что
+пользовательские процессы пронумерованы от 1 до N, и что страницы пронумерованы
+от 1 до M. С каждым процессом связана переменная «номер_страницы», значение
+которой после очередной выдачи страницы определяет номер только что выданной
+страницы. В свою очередь с каждой страницей связана переменная
+«номер_процесса», значение которой указывает процесс, которому была выдана.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>2. Каждый пользовательский
+процесс имеет переменную состояния «процесс_пер» - переменная клиента; при этом
+процесс_пер=1 означает «Мне нужна страница» (иначе процесс_пер=0). Каждая
+страница имеет переменную состояния «страница_пер»; при этом страница_пер=1
+означает, что она находится среди буферного пула свободных страниц. С каждым
+процессом и каждой страницей связаны двоичные семафоры «процесс_сем» и
+«страница_сем».<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>3. Предполагается, что
+каждая страница выдается и возвращается на основании указаний пользовательского
+процесса, но процесс не имеет возможности возвратить взятую страницу мгновенно.
+После того, как процесс заявляет, что страница ему больше не нужна, последняя
+не становится немедленно доступной для последующего использования. Фактически
+возврат страницы заканчивается после того, как та действительно присоединится к
+буферному пулу свободных страниц: об этом страница будет сообщать процессу с
+помощью общего семафора процесса «возвращенные_страницы». P-операция над этим
+семафором должна предостеречь пользовательский процесс от неумышленного
+превышения своей максимальной потребности. Перед каждым запросом страницы
+процесс выполнит P-операцию над семафором «возвращенные_страницы», а начальное
+значение переменной «возвращенные_страницы» полагается равным потребности.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:36.0pt;text-align:justify'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Текст программы:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>int заем[N], требование[N],
+процесс_сем[N], <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">     </span>процесс_пер[N], номер_страницы[N],<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">     </span>возвращенные_страницы[N], страница_сем[&Igrave;],<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">     </span>страница_пер[&Igrave;],
+номер_процесса[&Igrave;];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style='mso-tab-count:1'>            </span>int
+взаимоискл, V_буфера, к;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style='mso-tab-count:1'>            </span>Boolean
+procedure <b style='mso-bidi-font-weight:normal'>попытка_выдать_страницу_процессу</b>(j)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style="mso-spacerun: yes">         </span>int
+j;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style='mso-tab-count:1'>            </span>{
+int i, свободные_страницы;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">  </span>boolean int завершение_под_сомнением[N];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">   </span>if процесс_пер[j] = 1 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">      </span>{ <span style='mso-tab-count:1'>            </span>свободные_страницы
+= V_буфера -1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>требование[j]
+= требование[j]-1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>заем[j] =
+заем[j]+1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">  </span><span style='mso-tab-count:1'>            </span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>for</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'> (</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>=1; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>&lt;=</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>N</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span>завершение_под_сомнением[i]
+= true;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">  </span></span><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:
+10.0pt;mso-ansi-language:EN-US'>L</span><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'>0: <span style='mso-tab-count:1'>            </span></span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>for</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'> (</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>=1; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>&lt;=</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>N</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>i</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>            </span></span><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>/* проверка на безопасность
+завершения */<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>{ if
+завершение_под_сомнением[i] and<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style="mso-spacerun: yes">     </span>требование[i]
+&lt;= свободные деньги <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style="mso-spacerun: yes">  </span><span
+style='mso-tab-count:1'>            </span>{ if<span style="mso-spacerun:
+yes">   </span>i # j <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">      </span>{ завершение_под_сомнением[i] = false;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">        </span>свободные деньги = свободные
+деньги+заем[i];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">        </span></span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'>goto
+L0;}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>            </span><span style='mso-tab-count:
+1'>            </span>else<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>            </span><span style='mso-tab-count:
+1'>            </span><span style="mso-spacerun: yes">      </span>{ i = 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>            </span><span style='mso-tab-count:
+1'>            </span><span style="mso-spacerun: yes">       </span><span
+style='mso-tab-count:1'>            </span>L1: i = i+1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'><span style='mso-tab-count:1'>            </span><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span></span><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>if страница_пер[i] = 0<span
+style="mso-spacerun: yes">  </span>goto L1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>номер_страницы[j] = i;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>номер_процесса[i] = j;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>процесс_пер[j] = 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>страница_пер[i] = 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>V_буфера = V_буфера - 1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:108.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>попытка_выдать_страницу_процессу
+= true;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>V(процесс_сем[j]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style='mso-tab-count:1'>            </span>V(страница_сем[i]; return;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">      </span>}<span style="mso-spacerun:
+yes">                                            </span><span style='mso-tab-count:
+2'>                        </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style="mso-spacerun: yes">   </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">            </span>требование[j] = требование[j]+1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">  </span><span style='mso-tab-count:1'>          </span><span
+style="mso-spacerun: yes">   </span>заем[j] = заем[j]-1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">      </span>} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">      </span>попытка_выдать_страницу_процессу = false;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:72.0pt;text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>/*<span style="mso-spacerun:
+yes">  </span><span style='mso-tab-count:1'> </span>конец процедуры<span
+style='mso-tab-count:1'> </span>*.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>взаимоискл = 1; V_буфера =
+M;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>for</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'> (</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>=1; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>&lt;=</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>N</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">    </span>{<span style="mso-spacerun: yes">  </span><span
+style='mso-tab-count:1'>            </span>заем[k] = 0; процесс_сем[k] = 0;
+процесс_пер[k] = 0; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes"> </span><span style='mso-tab-count:1'>            </span>требование[k] =
+потребность[k];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>возвращенные_страницы[k] = потребность[k];<span
+style="mso-spacerun: yes">  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>for</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'> (</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>=1; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>&lt;=</span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>M</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>; </span><span
+lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:
+EN-US'>k</span><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">    </span>{<span style='mso-tab-count:1'>            </span>страница_сем[k]
+= 0; страница_пер = 1;<span style="mso-spacerun: yes">   </span>} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>parbegin<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>процесс 1: <span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>процесс 2: <span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span>. . . .
+. . . . .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>процесс N: <span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>страница 1: <span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>страница 2: <span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span><span style='mso-tab-count:1'>            </span>. . . .
+. . . . .<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>страница M:<span
+style='mso-tab-count:1'>            </span>{ . . . . . . . . . }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>parend<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:0cm;text-align:justify;text-indent:36.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>У процесса «n»
+<u>запрос новой страницы</u> (часть программы процесса) описывается
+последовательностью операторов: <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>P(возвращенные_страницы[n]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>P(взаимоискл);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>процесс_пер[n]=1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>попытка_выдать_страницу_процессу(n);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>V(взаимоискл);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>P(процесс_сем[n]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>После завершения последнего
+оператора значение переменной «номер страницы[n]» определяет только что
+выданную страницу; процесс может использовать его, но обязан возвратить его в
+надлежащее время ОС.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;
+margin-left:0cm;text-align:justify;text-indent:36.0pt'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Структура
+программы для страницы:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Страница m:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>{ int h;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style="mso-spacerun:
+yes">   </span>L:<span style='mso-tab-count:1'>            </span>P(страница_сем[m]);<span
+style="mso-spacerun: yes">     </span><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">           </span>*<span style="mso-spacerun: yes">  
+</span>(разблокирует процесс)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>/* теперь номер_процесса[m] указывает процесс, которому<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:89.25pt;text-align:justify'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>выдана страница. Страница
+обслуживает процесс до тех пор, пока она необходима.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:89.25pt;text-align:justify'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>Для возвращения в буферный
+пул страница поступает<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:89.25pt;text-align:justify'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>след. образом: */<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>P(взаимоискл);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>требование[номер_процесса[m]]=<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+36.0pt'><span style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>требование[номер_процесса[m]]+1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>заем[номер_процесса[m]]=заем[номер_процесса[m]]-1;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>страница_пер[m]=1; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>V_буфера= V_буфера+1;</span><span lang=EN-US
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-align:justify;text-indent:
+36.0pt'><span lang=EN-US style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-ansi-language:EN-US'>/*<span style="mso-spacerun: yes">   </span></span><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>сообщение процессу<span
+style="mso-spacerun: yes">  </span>*.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>V(возвращенные_страницы[номер_процесса[m]]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><span style='mso-tab-count:1'>            </span><span
+style="mso-spacerun: yes">     </span>J:<span style='mso-tab-count:1'>            </span>V(взаимоискл);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><span style='mso-tab-count:
+1'>            </span>goto L;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>}<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

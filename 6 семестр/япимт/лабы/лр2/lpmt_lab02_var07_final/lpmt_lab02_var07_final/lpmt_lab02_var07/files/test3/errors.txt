@@ -1,0 +1,2 @@
+Error: can`t determine symbol "@"
+Error in string 3:     @#@#@#@#

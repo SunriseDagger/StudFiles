@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1370954362 source:/home/mpiz/lab7var1/l7v1/launch.c
+	"pv.h"
+
+1370948998 /home/mpiz/lab7var1/l7v1/pv.h
+	<stdio.h>
+	<sys/sem.h>
+	<sys/ipc.h>
+	<sys/types.h>
+	<fcntl.h>
+	<sys/msg.h>
+	<stdlib.h>
+	<errno.h>
+
+1370954324 source:/home/mpiz/lab7var1/l7v1/pv.c
+	"pv.h"
+
+1371038106 source:/home/mpiz/lab7exz/l7v1/pv.c
+	"pv.h"
+
+1370948998 /home/mpiz/lab7exz/l7v1/pv.h
+	<stdio.h>
+	<sys/sem.h>
+	<sys/ipc.h>
+	<sys/types.h>
+	<fcntl.h>
+	<sys/msg.h>
+	<stdlib.h>
+	<errno.h>
+
+1371040192 source:/home/mpiz/lab7exz/l7v1/launch.c
+	"pv.h"
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1371028718 source:/home/mpiz/lab7exz/l7v2/launch.c
+	<sys/sem.h>
+	<sys/shm.h>
+	<sys/types.h>
+	<sys/ipc.h>
+	<errno.h>
+	<stdio.h>
+	<fcntl.h>
+	<signal.h>
+

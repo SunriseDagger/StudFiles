@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="prog_main/prog_main.cbp" />
+		<Project filename="tmpgauss/tmpgauss.cbp" />
+		<Project filename="parse_h/parse_h.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

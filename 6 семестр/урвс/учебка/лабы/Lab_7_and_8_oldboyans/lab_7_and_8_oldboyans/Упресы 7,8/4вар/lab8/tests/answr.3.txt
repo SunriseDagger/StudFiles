@@ -1,0 +1,5 @@
+Server2:file6.txt
+Server3:file6.txt
+Server1:file6.txt
+Server0:file6.txt
+Server4:file6.txt

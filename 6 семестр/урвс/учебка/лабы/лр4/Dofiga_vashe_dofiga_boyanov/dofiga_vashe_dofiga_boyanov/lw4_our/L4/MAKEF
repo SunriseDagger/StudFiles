@@ -1,0 +1,5 @@
+cc -o fact fact.c
+cc -o lnew4 lnew4.c 
+echo Compiling complete!!!
+echo Please enter *lnew4!!
+

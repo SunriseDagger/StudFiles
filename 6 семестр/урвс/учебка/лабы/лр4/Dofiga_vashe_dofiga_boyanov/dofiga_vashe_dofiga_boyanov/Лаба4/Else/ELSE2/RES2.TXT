@@ -1,0 +1,11 @@
+$ ./lab4_2
+Building pipes
+pid1 = 31280
+pid2 = 31283
+Let's get started!! <process 31280>, num = 11
+Exp calculated!
+Let's get started!! <process 31283>, num = 22
+Pi calculated!
+exp2 = 7.389056
+pi = 3.139593
+Result: 0.037968

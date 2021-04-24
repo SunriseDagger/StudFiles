@@ -1,0 +1,3 @@
+cc -o Lab4NEW lab4new.c
+echo OTCOMPILING!!!
+#./Lab4NEW

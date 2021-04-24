@@ -1,0 +1,24 @@
+void main (){
+	float var1, a = 20, b = 0.1, var2 = -1.4;
+	int rez1 = 0, rez2 = 2, b1;
+	
+	//Присваивание целому вещественного и наоборот
+	b1 = b;
+	var1 = rez2;
+
+	//Логические операции
+	char bool1 = a==b, bool2, bool3, bool4;
+	bool2 = rez1 != 0;
+	bool3 = b > var2;
+	bool4 = bool3 < bool2;
+
+	//Некоторое сложное выражение
+	b1 = rez2 + b *(1 - (a - var2));
+	rez1 = b1 - 3.4;
+	var2 += 4.6;
+
+	//Все типы операций разом
+
+	float total_rez = a != 5 - (b==1 * 4);
+
+}

@@ -1,0 +1,1 @@
+g++ laba4.cc -o laba4

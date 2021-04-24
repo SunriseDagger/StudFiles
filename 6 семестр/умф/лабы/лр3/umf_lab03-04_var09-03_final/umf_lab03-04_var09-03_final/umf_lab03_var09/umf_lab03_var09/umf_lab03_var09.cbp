@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="umf_lab03_var09" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/umf_lab03_var09" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/umf_lab03_var09" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-cpp" />
+			<Add option="-fimplicit-none" />
+			<Add option="-fdefault-double-8" />
+			<Add option="-fdefault-real-8" />
+			<Add option="-Wextra" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="additional_classes.f95">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="grid_gen.f95">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="harm_fem.f95">
+			<Option weight="1" />
+		</Unit>
+		<Unit filename="main.f95">
+			<Option weight="2" />
+		</Unit>
+		<Unit filename="module_list.f95">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="solver_gmres.f95">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="solver_los.f95">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="timer.f95">
+			<Option weight="0" />
+		</Unit>
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

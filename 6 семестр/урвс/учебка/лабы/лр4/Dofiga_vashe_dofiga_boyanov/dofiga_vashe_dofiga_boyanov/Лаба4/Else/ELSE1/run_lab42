@@ -1,0 +1,6 @@
+gcc pi.cpp -o pi
+gcc cos.cpp -o cos
+gcc lab42.cpp -o lab42
+./lab42 1.5707 > f_pi_2_2
+./lab42 0 > f_0_2
+./lab42 1.0472 > f_pi_3_2

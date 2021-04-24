@@ -1,0 +1,4 @@
+gcc pi.cpp -o pi
+gcc exp.cpp -o exp
+gcc lab42.cpp -o lab42
+./lab42 > rez

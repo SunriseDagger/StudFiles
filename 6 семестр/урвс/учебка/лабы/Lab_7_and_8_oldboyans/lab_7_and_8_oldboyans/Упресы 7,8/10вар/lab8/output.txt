@@ -1,0 +1,4 @@
+Path is .
+Mask is *.cpp
+./lab8_server.cpp
+./lab8_client.cpp

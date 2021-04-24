@@ -1,0 +1,348 @@
+void main()
+{
+    int a=2, b=-3, c[3], d=9, e=7, f, g, h;
+    c[0] = 3;
+    c[1] = c[0] + a;
+    c[2] = c[1] - c[0];
+    f = a - b;
+    f += 1;
+    g = a * 8 - c[1];
+    h = b * 2 - (a > b);
+}
+
+
+a = 2
+b = -3
+d = 9
+e = 7
+c[0] = 3
+c[1] = 5
+c[2] = 2
+f = 6
+g = 11
+h = -7
+
+
+section .data
+	a:	dd	2
+	b:	dd	-3
+	d:	dd	9
+	e:	dd	7
+	const_48_0_CVCEHPMF6N:	dd	0
+	const_51_0_CVCEHPMF6N:	dd	3
+	const_49_0_CVCEHPMF6N:	dd	1
+	const_50_0_CVCEHPMF6N:	dd	2
+	f:	dd	0
+	g:	dd	0
+	const_56_0_CVCEHPMF6N:	dd	8
+	h:	dd	0
+	tmp_var_int_CVCEHPMF6N:	dd	0
+section .bss
+	c:	resd	3
+section .text
+	global main
+main:
+	finit
+	fild	dword [const_48_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	push	edx
+	fild	dword [const_51_0_CVCEHPMF6N]
+	pop		edx
+	fistp	dword [c+edx*4]
+	finit
+	fild	dword [const_49_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	push	edx
+	fild	dword [const_48_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	fild	dword [c+edx*4]
+	fild	dword [a]
+	fadd
+	pop		edx
+	fistp	dword [c+edx*4]
+	finit
+	fild	dword [const_50_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	push	edx
+	fild	dword [const_49_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	fild	dword [c+edx*4]
+	fild	dword [const_48_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	fild	dword [c+edx*4]
+	fsub
+	pop		edx
+	fistp	dword [c+edx*4]
+	finit
+	fild	dword [a]
+	fild	dword [b]
+	fsub
+	fistp	dword [f]
+	finit
+	fild	dword [f]
+	fild	dword [const_49_0_CVCEHPMF6N]
+	fadd
+	fistp	dword [f]
+	finit
+	fild	dword [a]
+	fild	dword [const_56_0_CVCEHPMF6N]
+	fmul
+	fild	dword [const_49_0_CVCEHPMF6N]
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	mov		edx, [tmp_var_int_CVCEHPMF6N]
+	fild	dword [c+edx*4]
+	fsub
+	fistp	dword [g]
+	finit
+	fild	dword [b]
+	fild	dword [const_50_0_CVCEHPMF6N]
+	fmul
+	fild	dword [a]
+	fild	dword [b]
+	fcomp
+	fistp	dword [tmp_var_int_CVCEHPMF6N]
+	fstsw	ax
+	sahf
+	jb lbl_gt_70_CVCEHPMF6N
+	fldz
+	jmp lbl_ex_70_CVCEHPMF6N
+lbl_gt_70_CVCEHPMF6N:
+	fld1
+lbl_ex_70_CVCEHPMF6N:
+	fsub
+	fistp	dword [h]
+	mov		eax, 0
+	ret
+
+
+
+=======================================================================================================================================
+
+void main()
+{
+    int ar = 2, bk = 7, array[2], kbn;
+    array[0] = ar;    
+    ar += bk;
+    array[1] = ar;
+    ar = bk + kbn;
+}
+
+Code error: Variable "kbn" is not initialized!
+
+=======================================================================================================================================
+
+void main()
+{
+    int a = 5;
+    float b = 3.7, c = 0;
+    c -= (a > 4 < 2 == 1 != b) * 2 < b;
+}
+
+
+a = 5
+b = 3.700000
+c = -1.000000
+
+section .data
+	a:	dd	5
+	b:	dq	3.7
+	c:	dq	0
+	const_52_1_4UHFE02VO7:	dd	4
+	const_50_0_4UHFE02VO7:	dd	2
+	const_49_0_4UHFE02VO7:	dd	1
+	tmp_var_int_4UHFE02VO7:	dd	0
+section .text
+	global main
+main:
+	finit
+	fild	dword [a]
+	fild	dword [const_52_1_4UHFE02VO7]
+	fcomp
+	fistp	dword [tmp_var_int_4UHFE02VO7]
+	fstsw	ax
+	sahf
+	jb lbl_gt_15_4UHFE02VO7
+	fldz
+	jmp lbl_ex_15_4UHFE02VO7
+lbl_gt_15_4UHFE02VO7:
+	fld1
+lbl_ex_15_4UHFE02VO7:
+	fild	dword [const_50_0_4UHFE02VO7]
+	fcomp
+	fistp	dword [tmp_var_int_4UHFE02VO7]
+	fstsw	ax
+	sahf
+	ja lbl_lt_17_4UHFE02VO7
+	fldz
+	jmp lbl_ex_17_4UHFE02VO7
+lbl_lt_17_4UHFE02VO7:
+	fld1
+lbl_ex_17_4UHFE02VO7:
+	fild	dword [const_49_0_4UHFE02VO7]
+	fcomp
+	fistp	dword [tmp_var_int_4UHFE02VO7]
+	fstsw	ax
+	sahf
+	je lbl_eq_19_4UHFE02VO7
+	fldz
+	jmp lbl_ex_19_4UHFE02VO7
+lbl_eq_19_4UHFE02VO7:
+	fld1
+lbl_ex_19_4UHFE02VO7:
+	fld		qword [b]
+	fcomp
+	fistp	dword [tmp_var_int_4UHFE02VO7]
+	fstsw	ax
+	sahf
+	jne lbl_ne_21_4UHFE02VO7
+	fldz
+	jmp lbl_ex_21_4UHFE02VO7
+lbl_ne_21_4UHFE02VO7:
+	fld1
+lbl_ex_21_4UHFE02VO7:
+	fild	dword [const_50_0_4UHFE02VO7]
+	fmul
+	fld		qword [b]
+	fcomp
+	fistp	dword [tmp_var_int_4UHFE02VO7]
+	fstsw	ax
+	sahf
+	ja lbl_lt_25_4UHFE02VO7
+	fldz
+	jmp lbl_ex_25_4UHFE02VO7
+lbl_lt_25_4UHFE02VO7:
+	fld1
+lbl_ex_25_4UHFE02VO7:
+	fld		qword [c]
+	fsubr
+	fstp	qword [c]
+	mov		eax, 0
+	ret
+
+=====================================================================================================================================
+
+void main()
+{
+    int a = 5, q[1], g = 3.4;
+    float b = 3.5, c[4], d[2];
+    c[0] = g + 1;
+    c[1] = b + 2;
+    c[3] = c[0] == c[0];
+    q[0] = b;
+    d[1] = q[0];
+    d[0] *= 3.0;            
+}
+
+a = 5
+g = 3
+b = 3.500000
+c[0] = 4.000000
+c[1] = 5.500000
+c[2] = 0.000000
+c[3] = 1.000000
+q[0] = 4
+d[0] = 0.000000
+d[1] = 4.000000
+
+section .data
+	a:	dd	5
+	g:	dd	3
+	b:	dq	3.5
+	const_48_0_4JK3QSI9Q1:	dd	0
+	const_49_0_4JK3QSI9Q1:	dd	1
+	const_50_1_4JK3QSI9Q1:	dd	2
+	const_51_0_4JK3QSI9Q1:	dd	3
+	const_45_0_4JK3QSI9Q1:	dq	3.0
+	tmp_var_int_4JK3QSI9Q1:	dd	0
+section .bss
+	c:	resq	4
+	q:	resd	1
+	d:	resq	2
+section .text
+	global main
+main:
+	finit
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fild	dword [g]
+	fild	dword [const_49_0_4JK3QSI9Q1]
+	fadd
+	pop		edx
+	fstp	qword [c+edx*8]
+	finit
+	fild	dword [const_49_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fld		qword [b]
+	fild	dword [const_50_1_4JK3QSI9Q1]
+	fadd
+	pop		edx
+	fstp	qword [c+edx*8]
+	finit
+	fild	dword [const_51_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	fld		qword [c+edx*8]
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	fld		qword [c+edx*8]
+	fcomp
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	fstsw	ax
+	sahf
+	je lbl_eq_37_4JK3QSI9Q1
+	fldz
+	jmp lbl_ex_37_4JK3QSI9Q1
+lbl_eq_37_4JK3QSI9Q1:
+	fld1
+lbl_ex_37_4JK3QSI9Q1:
+	pop		edx
+	fstp	qword [c+edx*8]
+	finit
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fld		qword [b]
+	pop		edx
+	fistp	dword [q+edx*4]
+	finit
+	fild	dword [const_49_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	fild	dword [q+edx*4]
+	pop		edx
+	fstp	qword [d+edx*8]
+	finit
+	fild	dword [const_48_0_4JK3QSI9Q1]
+	fistp	dword [tmp_var_int_4JK3QSI9Q1]
+	mov		edx, [tmp_var_int_4JK3QSI9Q1]
+	push	edx
+	fld		qword [const_45_0_4JK3QSI9Q1]
+	pop		edx
+	fld		qword [d+edx*8]
+	fmul
+	fstp	qword [d+edx*8]
+	mov		eax, 0
+	ret
+
+
+

@@ -1,0 +1,6 @@
+int main()
+{
+    a = 12.0asbd;
+    return 0;
+}
+

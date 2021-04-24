@@ -1,0 +1,5 @@
+gcc lab41.cpp -o lab41
+rm temp.tmp
+./lab41 1.5707 > f_pi_2
+./lab41 0 > f_0
+./lab41 1.0472 > f_pi_3

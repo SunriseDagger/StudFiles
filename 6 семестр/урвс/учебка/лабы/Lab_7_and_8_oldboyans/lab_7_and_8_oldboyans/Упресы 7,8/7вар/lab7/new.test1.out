@@ -1,0 +1,97 @@
+Pwnz_teh_win_team presents:
+Semophore is ok semid = 360448
+Query is ok msgid = 262144
+sem=0	status=0	errno=0
+sem=1	status=0	errno=0
+sem=2	status=0	errno=0
+sem=3	status=0	errno=0
+
+Fork for pid_p1 created
+
+
+Fork for pid_p2 created
+
+
+Starting poem building
+
+
+0	Midway upon the journey of our life
+0	>Midway upon the journey of our life
+
+Fork for pid_p3 created
+
+
+1	I found myself within a forest dark,
+1	>I found myself within a forest dark,
+
+2	For the straightforward pathway had been lost.
+2	>For the straightforward pathway had been lost.
+
+3	Ah me! how hard a thing it is to say
+3	>Ah me! how hard a thing it is to say
+
+4	What was this forest savage, rough, and stern,
+0	>What was this forest savage, rough, and stern,
+
+5	Which in the very thought renews the fear.
+1	>Which in the very thought renews the fear.
+
+6	So bitter is it, death is little more;
+2	>So bitter is it, death is little more;
+
+7	But of the good to treat, which there I found,
+3	>But of the good to treat, which there I found,
+
+8	Speak will I of the other things I saw there.
+0	>Speak will I of the other things I saw there.
+
+9	I cannot well repeat how there I entered,
+1	>I cannot well repeat how there I entered,
+
+10	So full was I of slumber at the moment
+2	>So full was I of slumber at the moment
+
+11	In which I had abandoned the true way.
+3	>In which I had abandoned the true way.
+
+12	But after I had reached a mountain's foot,
+0	>But after I had reached a mountain's foot,
+
+13	At that point where the valley terminated,
+1	>At that point where the valley terminated,
+
+14	Which had with consternation pierced my heart,
+2	>Which had with consternation pierced my heart,
+
+15	Upward I looked, and I beheld its shoulders,
+3	>Upward I looked, and I beheld its shoulders,
+
+16	Vested already with that planet's rays
+0	>Vested already with that planet's rays
+
+17	Which leadeth others right by every road.
+1	>Which leadeth others right by every road.
+
+18	Then was the fear a little quieted
+2	>Then was the fear a little quieted
+
+19	That in my heart's lake had endured throughout
+3	>That in my heart's lake had endured throughout
+
+20	The night, which I had passed so piteously.
+0	>The night, which I had passed so piteously.
+
+21	And even as he, who, with distressful breath,
+1	>And even as he, who, with distressful breath,
+
+22	Forth issued from the sea upon the shore,
+2	>Forth issued from the sea upon the shore,
+
+23	Turns to the water perilous and gazes;
+3	>Turns to the water perilous and gazes;
+Process with pid = 2956 exited with status 0
+Process with pid = 2957 exited with status 0
+Process with pid = 2958 exited with status 0
+Process with pid = 2959 exited with status 0
+Message query remove is ok
+Sem object remove is ok

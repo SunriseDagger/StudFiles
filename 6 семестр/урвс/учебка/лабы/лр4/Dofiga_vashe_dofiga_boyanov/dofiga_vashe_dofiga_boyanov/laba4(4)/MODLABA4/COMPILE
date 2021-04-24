@@ -1,0 +1,3 @@
+gcc -o pusk laba4b.c
+gcc -o pod1 pod1.c
+gcc -o pod2 pod2.c

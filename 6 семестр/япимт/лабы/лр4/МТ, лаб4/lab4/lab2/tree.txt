@@ -1,0 +1,1 @@
+a b var2 rez1 rez2 b1 var1 bool1 a bool2 rez1 bool3 b bool4 bool3 b1 rez2 b 1 a rez1 b1 var2 total_rez a 5 != b 1 == ; 4 * - = ; 4.6 += ; 3.4 - = ; var2 - - * + = ; bool2 < = ; var2 > = ; 0 != = ; b == = ; rez2 = ; b = ; 2 = ; 0 = ; -1.4 = ; 0.1 = ; 20 = 

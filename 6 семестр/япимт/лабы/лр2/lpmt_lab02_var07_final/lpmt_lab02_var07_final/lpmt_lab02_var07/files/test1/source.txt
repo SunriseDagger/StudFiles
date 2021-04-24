@@ -1,0 +1,27 @@
+/**
+ * Doxygen-style
+ * commentary
+ */
+
+int main()
+{
+    //34d;
+    int a = 0; //!< it is a
+    float b[2];
+    b[  0  ]   =   2.0   ;
+    b[1]=1.5;
+    a--;
+/* multi
+string
+comment
+*/
+    ;
+/* */ /* */ a += b[1] + b[0] /* this is b1+b0 */ * 2;
+    a++;
+/*  // */ 
+/* //
+//
+// */
+    return 0;
+}
+

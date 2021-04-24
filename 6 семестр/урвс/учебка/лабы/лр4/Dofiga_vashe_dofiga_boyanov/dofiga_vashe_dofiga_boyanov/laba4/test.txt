@@ -1,0 +1,32 @@
+For laba4_1:
+Test 1:
+$ ./laba4_1
+Result:
+Usage: ./laba4_1 n k
+
+Test 2:
+$ ./laba4_1 2 3 1
+Result:
+Usage: ./laba4_1 n k
+
+Test 3:
+$ ./laba4_1 2 d
+Result:
+Parameters invalid: point of parameters - numbers!
+
+Test 4:
+$ ./laba4_1 13 0
+Result:
+Parameters invalid: point of parameters - from 1 up to 12!
+
+Test 5:
+$ ./laba4_1 2 4
+Result:
+Parameters invalid: n < k!
+
+Test 6:
+$ ./laba4_1 4 2
+Result:
+The numbers of combination = 6
+
+

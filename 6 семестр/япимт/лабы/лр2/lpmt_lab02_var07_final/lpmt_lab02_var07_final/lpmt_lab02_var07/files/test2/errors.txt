@@ -1,0 +1,2 @@
+Error: incorrect coment
+Error in string 3: /*

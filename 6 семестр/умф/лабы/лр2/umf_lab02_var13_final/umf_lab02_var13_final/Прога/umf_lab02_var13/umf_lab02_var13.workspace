@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="simple_iter/simple_iter.cbp" />
+		<Project filename="newton/newton.cbp" />
+		<Project filename="mesh_generator/mesh_generator.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
