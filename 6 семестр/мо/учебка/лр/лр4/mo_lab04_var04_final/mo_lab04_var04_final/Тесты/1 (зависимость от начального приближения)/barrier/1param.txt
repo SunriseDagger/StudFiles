@@ -1,0 +1,6 @@
+bss.init_func(myfunk);
+    bss.init_rectangle(vector2lf(0.25, 1.75), 1E-2, 1E-2);
+    bss.init_max_iters(500000);
+    bss.init_tests(1E-5, 0.99);
+    bss.init_eps_grow(1E-2);
+ 

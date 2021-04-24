@@ -1,0 +1,56 @@
+[method]
+name=Метод Гаусса
+type=Метод нулевого порядка
+exe=methods/siom_method_gauss.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e
+derivative=no
+
+[method]
+name=Метод Розенброка
+type=Метод нулевого порядка
+exe=methods/siom_method_rosenbrock.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e
+derivative=no
+
+[method]
+name=Метод наискорейшего спуска
+type=Метод первого порядка
+exe=methods/siom_method_grad.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод сопряженных градиентов (Флетчера-Ривса)
+type=Метод первого порядка
+exe=methods/siom_method_cgm.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод сопряженных градиентов (Полака-Рибьера-Пшеничного)
+type=Метод первого порядка
+exe=methods/siom_method_polak_ribiere.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод Ньютона
+type=Метод второго порядка
+exe=methods/siom_method_nuton.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод Бройдена
+type=Метод переменной метрики
+exe=methods/siom_method_broiden.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод Флетчера
+type=Метод переменной метрики
+exe=methods/siom_method_flatcher.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[method]
+name=Метод Дэвидона-Флетчера-Пауэлла
+type=Метод переменной метрики
+exe=methods/siom_method_dfp.exe --function "%s" --begin-point %f %f --variable-epsilon %e --function-epsilon %e --derivative-epsilon %e 
+derivative=yes
+
+[history]
+function=-exp(-(x-3)^2-(y-1)^2/9)-2*exp(-(x-2)^2/4-(y-2)^2)
